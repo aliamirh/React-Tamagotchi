@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Components
+import TamagotchiList from './components/TamagotchiList';
+import Header from './components/Header';
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      masterTamagotchiList: []
+    }
+    this.handleAddingNewTamagotchi = this.handleAddingNewTamagotchi.bind(this);
+  }
+
+handleAddingNewTamagotchi(newTamagotchi){
+  this.setState({
+    masterTamagotchiList: [...this.state.masterTamagotchiList, newTamagotchi]
+  });
 }
 
-export default App;
+render() {
+  return(
+    <div>
+      <Header/>
+      <Switch>
+        <Route exact path='/' render={() => (<TamagotchiList
+          tamagotchiList={this.state.masterTamagotchiList}
+        /> )} />
+      </Switch>
+    </div>
+  )
+}
+}
