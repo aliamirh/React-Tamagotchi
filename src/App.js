@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import TamagotchiForm from './components/TamagotchiForm';
 
 // Components
 import TamagotchiList from './components/TamagotchiList';
@@ -28,6 +29,7 @@ render() {
         <Route exact path='/' render={() => (<TamagotchiList
           tamagotchiList={this.state.masterTamagotchiList}
         /> )} />
+        <Route exact path='/newTamagotchi' render={()=> <TamagotchiForm onNewTamagotchiCreation={this.handleAddingNewTamagotchi}/>} />
       </Switch>
     </div>
   )
