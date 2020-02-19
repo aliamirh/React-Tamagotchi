@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Moment from 'moment';
 
 // Components
 import Header from './components/Header';
@@ -14,6 +13,13 @@ export default class App extends React.Component {
       masterTamagotchiList: []
     }
     this.handleAddingNewTamagotchi = this.handleAddingNewTamagotchi.bind(this);
+    this.updateTamagotchiAge = this.updateTamagotchiAge.bind(this);
+    this.updateTamagotchiFatigue = this.updateTamagotchiFatigue.bind(this);
+    this.updateTamagotchiHunger = this.updateTamagotchiHunger.bind(this);
+    this.updateTamagotchiEntertainment = this.updateTamagotchiEntertainment.bind(this);
+    this.feedTamagotchi = this.feedTamagotchi.bind(this);
+    this.entertainTamagotchi = this.entertainTamagotchi.bind(this);
+    this.restTamagotchi = this.restTamagotchi.bind(this);
   }
 
 handleAddingNewTamagotchi(newTamagotchi){
@@ -31,17 +37,17 @@ componentDidMount() {
 this.tamagotchiHungerUpdate = setInterval(() =>
 this.updateTamagotchiHunger(),
 15000
-)
+);
 
 this.tamagotchiFatigueUpdate = setInterval(() =>
 this.updateTamagotchiFatigue(),
 20000
-)
+);
 
 this.tamagotchiEntertainmentUpdate = setInterval(() =>
 this.updateTamagotchiEntertainment(),
 25000
-)
+);
 }
 
 updateTamagotchiAge(){
@@ -80,12 +86,39 @@ updateTamagotchiEntertainment(){
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
+feedTamagotchi(){
+  console.log('tamgotchi fed');
+  let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+  newMasterTamagotchiList.forEach((tamagotchi) =>
+  tamagotchi.formattedHunger = (tamagotchi.hunger+=1)
+  )
+}
+
+entertainTamagotchi(){
+  console.log('tomagatchi entertained');
+  let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+  newMasterTamagotchiList.forEach((tamagotchi) =>
+  tamagotchi.entertainmentLevel = (tamagotchi.entertainmentLevel+=2)
+  )
+}
+
+restTamagotchi(){
+  console.log('tomagatchi rested');
+  let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+  newMasterTamagotchiList.forEach((tamagotchi) =>
+  tamagotchi.fatigue = (tamagotchi.fatigue+=3)
+  )
+}
+
 render() {
   return(
     <div>
       <Header/>
       <Switch>
         <Route exact path='/' render={() => (<TamagotchiList
+          updateHunger={this.feedTamagotchi}
+          updateEntertainment={this.entertainTamagotchi}
+          updateFatigue={this.restTamagotchi}
           tamagotchiList={this.state.masterTamagotchiList}
         /> )} />
         <Route exact path='/newTamagotchi' render={()=> <TamagotchiForm onNewTamagotchiCreation={this.handleAddingNewTamagotchi}/>} />
