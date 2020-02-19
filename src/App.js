@@ -27,6 +27,21 @@ componentDidMount() {
   this.updateTamagotchiAge(),
   60000
 );
+
+this.tamagotchiHungerUpdate = setInterval(() =>
+this.updateTamagotchiHunger(),
+15000
+)
+
+this.tamagotchiFatigueUpdate = setInterval(() =>
+this.updateTamagotchiFatigue(),
+20000
+)
+
+this.tamagotchiEntertainmentUpdate = setInterval(() =>
+this.updateTamagotchiEntertainment(),
+25000
+)
 }
 
 updateTamagotchiAge(){
@@ -35,6 +50,33 @@ updateTamagotchiAge(){
   newMasterTamagotchiList.forEach((tamagotchi) => 
   tamagotchi.formattedAge = (tamagotchi.timeOpen).fromNow(true)
   );
+  this.setState({masterTamagotchiList: newMasterTamagotchiList})
+}
+
+updateTamagotchiHunger(){
+  console.log('check hunger');
+  let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+  newMasterTamagotchiList.forEach((tamagotchi) =>
+  tamagotchi.formattedHunger = (tamagotchi.hunger-=1)
+  )
+  this.setState({masterTamagotchiList: newMasterTamagotchiList})
+}
+
+updateTamagotchiFatigue(){
+  console.log('check fatigue');
+  let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+  newMasterTamagotchiList.forEach((tamagotchi) =>
+  tamagotchi.formattedFatigue = (tamagotchi.fatigue-=1)
+  )
+  this.setState({masterTamagotchiList: newMasterTamagotchiList})
+}
+
+updateTamagotchiEntertainment(){
+  console.log('check entertainment');
+  let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+  newMasterTamagotchiList.forEach((tamagotchi) =>
+  tamagotchi.formattedEntertainment = (tamagotchi.entertainmentLevel-=1)
+  )
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
