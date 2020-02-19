@@ -14,9 +14,9 @@ export default class App extends React.Component {
     }
     this.handleAddingNewTamagotchi = this.handleAddingNewTamagotchi.bind(this);
     this.updateTamagotchiAge = this.updateTamagotchiAge.bind(this);
-    this.updateTamagotchiFatigue = this.updateTamagotchiFatigue.bind(this);
-    this.updateTamagotchiHunger = this.updateTamagotchiHunger.bind(this);
-    this.updateTamagotchiEntertainment = this.updateTamagotchiEntertainment.bind(this);
+    this.decreaseRestfulness = this.decreaseRestfulness.bind(this);
+    this.decreaseHunger = this.decreaseHunger.bind(this);
+    this.decreaseEntertainment = this.decreaseEntertainment.bind(this);
     this.feedTamagotchi = this.feedTamagotchi.bind(this);
     this.entertainTamagotchi = this.entertainTamagotchi.bind(this);
     this.restTamagotchi = this.restTamagotchi.bind(this);
@@ -35,17 +35,17 @@ componentDidMount() {
 );
 
 this.tamagotchiHungerUpdate = setInterval(() =>
-this.updateTamagotchiHunger(),
+this.decreaseHunger(),
 15000
 );
 
 this.tamagotchiFatigueUpdate = setInterval(() =>
-this.updateTamagotchiFatigue(),
+this.decreaseRestfulness(),
 20000
 );
 
 this.tamagotchiEntertainmentUpdate = setInterval(() =>
-this.updateTamagotchiEntertainment(),
+this.decreaseEntertainment(),
 25000
 );
 }
@@ -59,7 +59,7 @@ updateTamagotchiAge(){
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
-updateTamagotchiHunger(){
+decreaseHunger(){
   console.log('check hunger');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
   newMasterTamagotchiList.forEach((tamagotchi) =>
@@ -68,7 +68,7 @@ updateTamagotchiHunger(){
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
-updateTamagotchiFatigue(){
+decreaseRestfulness(){
   console.log('check fatigue');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
   newMasterTamagotchiList.forEach((tamagotchi) =>
@@ -77,7 +77,7 @@ updateTamagotchiFatigue(){
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
-updateTamagotchiEntertainment(){
+decreaseEntertainment(){
   console.log('check entertainment');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
   newMasterTamagotchiList.forEach((tamagotchi) =>
