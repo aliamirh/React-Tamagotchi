@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
+import Moment from 'moment';
 
 export default function TamagotchiForm (props){
     let _name = null;
@@ -8,7 +9,7 @@ export default function TamagotchiForm (props){
     function handleNewTamagotchiFormSubmission(event){
         event.preventDefault();
         console.log('test',props)
-        props.onNewTamagotchiCreation({name: _name.value, hunger: 20, fatigue: 20, entertainmentLevel: 20, id: v4()});
+        props.onNewTamagotchiCreation({name: _name.value, hunger: 20, fatigue: 20, entertainmentLevel: 20, timeOpen: new Moment(), id: v4()});
         _name.value = '';
     }
     

@@ -11,9 +11,14 @@ export default function TamagotchiList(props){
             hunger={tamagotchi.hunger}
             fatigue={tamagotchi.fatigue}
             entertainmentLevel={tamagotchi.entertainmentLevel}
+            formattedAge={tamagotchi.formattedAge}
             key= {tamagotchi.id}
             />
                 )}
         </div>
     );
+}
+
+TamagotchiList.propTypes = {
+    tamagotchiList: PropTypes.array
 }
