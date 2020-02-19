@@ -62,52 +62,67 @@ updateTamagotchiAge(){
 decreaseHunger(){
   console.log('check hunger');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-  newMasterTamagotchiList.forEach((tamagotchi) =>
-  tamagotchi.formattedHunger = (tamagotchi.hunger-=1)
-  )
+  newMasterTamagotchiList.forEach(function(tamagotchi){
+  if( tamagotchi.hunger > 0){
+    tamagotchi.formattedHunger = (tamagotchi.hunger-=1)
+  }else{
+    console.log('death')
+  }
+  })
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
 decreaseRestfulness(){
   console.log('check fatigue');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-  newMasterTamagotchiList.forEach((tamagotchi) =>
-  tamagotchi.formattedFatigue = (tamagotchi.fatigue-=1)
-  )
+  newMasterTamagotchiList.forEach(function(tamagotchi) {
+  if (tamagotchi.fatigue > 0 ){
+    tamagotchi.formattedFatigue = (tamagotchi.fatigue-=1)
+  }else{
+    console.log('dead')
+  }
+});
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
 decreaseEntertainment(){
   console.log('check entertainment');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-  newMasterTamagotchiList.forEach((tamagotchi) =>
-  tamagotchi.formattedEntertainment = (tamagotchi.entertainmentLevel-=1)
-  )
+  newMasterTamagotchiList.forEach(function(tamagotchi){
+    if ( tamagotchi.entertainmentLevel > 0){
+      tamagotchi.formattedEntertainment = (tamagotchi.entertainmentLevel-=1)
+    }else{
+      console.log('dead from Boredness')
+    }
+  })
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
 feedTamagotchi(){
   console.log('tamgotchi fed');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-  newMasterTamagotchiList.forEach((tamagotchi) =>
-  tamagotchi.formattedHunger = (tamagotchi.hunger+=1)
+  newMasterTamagotchiList.forEach((tamagotchi) => (tamagotchi.hunger < 20) ? tamagotchi.formattedHunger = (tamagotchi.hunger+=1) : console.log('hunger limit')
+  
   )
+  this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
 entertainTamagotchi(){
   console.log('tomagatchi entertained');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-  newMasterTamagotchiList.forEach((tamagotchi) =>
-  tamagotchi.entertainmentLevel = (tamagotchi.entertainmentLevel+=2)
+  newMasterTamagotchiList.forEach((tamagotchi) => (tamagotchi.entertainmentLevel < 20) ? tamagotchi.formattedEntertainment = (tamagotchi.entertainmentLevel+=2) : console.log('filled with fun')
+  
   )
+  this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
 restTamagotchi(){
   console.log('tomagatchi rested');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-  newMasterTamagotchiList.forEach((tamagotchi) =>
-  tamagotchi.fatigue = (tamagotchi.fatigue+=3)
+  newMasterTamagotchiList.forEach((tamagotchi) => (tamagotchi.fatigue < 20) ? 
+  tamagotchi.formattedFatigue = (tamagotchi.fatigue+=3) : console.log('fully rested')
   )
+  this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
 
 render() {
