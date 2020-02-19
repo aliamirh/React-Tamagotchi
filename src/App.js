@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import TamagotchiForm from './components/TamagotchiForm';
 
 // Components
-import TamagotchiList from './components/TamagotchiList';
 import Header from './components/Header';
+import TamagotchiList from './components/TamagotchiList';
+import TamagotchiForm from './components/TamagotchiForm';
 
 export default class App extends React.Component {
   constructor(props) {

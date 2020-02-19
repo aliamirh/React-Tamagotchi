@@ -8,9 +8,11 @@ export default function TamagotchiList(props){
             {props.tamagotchiList.map((tamagotchi) =>
             <Tamagotchi 
             name={tamagotchi.name}
+            hunger={tamagotchi.hunger}
+            fatigue={tamagotchi.fatigue}
+            entertainmentLevel={tamagotchi.entertainmentLevel}
             key= {tamagotchi.id}
             />
-
                 )}
         </div>
     );
