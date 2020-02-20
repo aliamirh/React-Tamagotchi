@@ -1,6 +1,8 @@
 import React from "react";
-import Tamagotchi from "./Tamagotchi";
 import PropTypes from "prop-types";
+
+import Tamagotchi from "./Tamagotchi";
+import StatusBar from "./StatusBar"
 
 export default function TamagotchiList(props) {
   return (
@@ -11,7 +13,7 @@ export default function TamagotchiList(props) {
           feedTamagotchi={props.updateHunger}
           entertainTamagotchi={props.updateEntertainment}
           restTamagotchi={props.updateFatigue}
-          key={tamagotchi.id}
+          key={tamagotchi.id} 
         />
       ))}
     </div>

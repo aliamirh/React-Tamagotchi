@@ -4,6 +4,7 @@ import Moment from 'moment';
 
 // Components
 import Header from "./components/Header";
+import StatusBar from './components/StatusBar';
 import TamagotchiList from "./components/TamagotchiList";
 import TamagotchiForm from "./components/TamagotchiForm";
 
@@ -21,6 +22,7 @@ export default class App extends React.Component {
     this.feedTamagotchi = this.feedTamagotchi.bind(this);
     this.entertainTamagotchi = this.entertainTamagotchi.bind(this);
     this.restTamagotchi = this.restTamagotchi.bind(this);
+    this.updateStatusBar = this.updateStatusBar.bind(this);
   }
 
   handleAddingNewTamagotchi(newTamagotchi) {
@@ -147,6 +149,10 @@ export default class App extends React.Component {
     this.setState({ masterTamagotchiList: newMasterTamagotchiList });
   }
 
+  updateStatusBar(){
+    console.log('update status bar');
+  }
+
   render() {
     return (
       <div>
@@ -161,6 +167,7 @@ export default class App extends React.Component {
                 updateEntertainment={this.entertainTamagotchi}
                 updateFatigue={this.restTamagotchi}
                 tamagotchiList={this.state.masterTamagotchiList}
+                updateStatusBar={this.state.masterTamagotchiList}
               />
             )}
           />
