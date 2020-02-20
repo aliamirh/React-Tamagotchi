@@ -1,10 +1,10 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Moment from 'moment';
+import Moment from "moment";
 
 // Components
 import Header from "./components/Header";
-import StatusBar from './components/StatusBar';
+import StatusBar from "./components/StatusBar";
 import TamagotchiList from "./components/TamagotchiList";
 import TamagotchiForm from "./components/TamagotchiForm";
 
@@ -27,10 +27,10 @@ export default class App extends React.Component {
 
   handleAddingNewTamagotchi(newTamagotchi) {
     let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
-    newTamagotchi.formattedAge = (newTamagotchi.timeOpen).fromNow(true);
-    newTamagotchi.formattedHunger = (newTamagotchi.hunger);
-    newTamagotchi.formattedEntertainment = (newTamagotchi.entertainmentLevel);
-    newTamagotchi.formattedFatigue= (newTamagotchi.fatigue);
+    newTamagotchi.formattedAge = newTamagotchi.timeOpen.fromNow(true);
+    newTamagotchi.formattedHunger = newTamagotchi.hunger;
+    newTamagotchi.formattedEntertainment = newTamagotchi.entertainmentLevel;
+    newTamagotchi.formattedFatigue = newTamagotchi.fatigue;
     newMasterTamagotchiList.push(newTamagotchi);
     this.setState({
       masterTamagotchiList: [...this.state.masterTamagotchiList, newTamagotchi]
@@ -59,8 +59,8 @@ export default class App extends React.Component {
     );
   }
 
-  componentWillUnmount(){
-    console.log('unmount log')
+  componentWillUnmount() {
+    console.log("unmount log");
     clearInterval(this.tamagotchiAgeUpdate);
     clearInterval(this.tamagotchiHungerUpdate);
     clearInterval(this.tamagotchiFatigueUpdate);
@@ -149,8 +149,8 @@ export default class App extends React.Component {
     this.setState({ masterTamagotchiList: newMasterTamagotchiList });
   }
 
-  updateStatusBar(){
-    console.log('update status bar');
+  updateStatusBar() {
+    console.log("update status bar");
   }
 
   render() {

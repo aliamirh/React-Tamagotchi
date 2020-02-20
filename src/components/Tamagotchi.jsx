@@ -17,47 +17,56 @@ export default function Tamagotchi(props) {
   };
 
   const statusBarStyle = {
-    color: 'white'
-}
+    color: "white"
+  };
 
-const hungerStyle = {
-    backgroundColor: 'green',
-    marginBottom: '12px',
-    width: '60%',
-    padding: '4px'
-}
-const fatigueStyle = {
-    backgroundColor: 'green',
-    marginBottom: '12px',
-    width: '60%',
-    padding: '4px'
-}
-const entertainmentStyle = {
-    backgroundColor: 'green',
-    marginBottom: '12px',
-    width: '60%',
-    padding: '4px'
-}
+  const outerStatusBar = {
+    backgroundColor: "white",
+    border: "1px solid black",
+    width: "20.5em",
+    marginBottom: "12px"
+  };
+
+  const hungerStyle = {
+    backgroundColor: "green",
+    width: `${props.formattedHunger}` + "em",
+    padding: "4px"
+  };
+  const fatigueStyle = {
+    backgroundColor: "green",
+    width: `${props.formattedFatigue}` + "em",
+    padding: "4px"
+  };
+  const entertainmentStyle = {
+    backgroundColor: "green",
+    width: `${props.formattedEntertainment}` + "em",
+    padding: "4px"
+  };
 
   return (
     <div>
       <div>
-      <h3>{props.name}</h3>
-      <h4>Born {props.formattedAge} ago</h4>
-      <h4>Hunger: {props.formattedHunger}</h4>
-      <h4>Fatigue: {props.formattedFatigue}</h4>
-      <h4>Entertainment: {props.formattedEntertainment}</h4>
-      <button onClick={feed}>Feed</button>
-      <button onClick={entertain}>Play with</button>
-      <button onClick={rest}>Put to Sleep</button>
-    </div>
-      <div style={statusBarStyle}>
-            <div style={hungerStyle}>{props.formattedHunger}</div>
-            <div style={fatigueStyle}>{props.formattedFatigue}</div>
-            <div style={entertainmentStyle}>{props.formattedEntertainment}</div>
+        <h3>{props.name}</h3>
+        <div style={statusBarStyle}>
+          <div style={outerStatusBar}>
+            <div style={hungerStyle} id="hungerBar">
+              Hunger: {props.formattedHunger}
+            </div>
+          </div>
+          <div style={outerStatusBar}>
+            <div style={fatigueStyle}>Fatigue: {props.formattedFatigue}</div>
+          </div>
+          <div style={outerStatusBar}>
+            <div style={entertainmentStyle}>
+              Entertainment: {props.formattedEntertainment}
+            </div>
+          </div>
         </div>
+        <button onClick={feed}>Feed</button>
+        <button onClick={entertain}>Play with</button>
+        <button onClick={rest}>Put to Sleep</button>
+      </div>
     </div>
-    
   );
 }
 
