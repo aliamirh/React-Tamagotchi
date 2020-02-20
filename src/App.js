@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import Moment from 'moment';
 
 // Components
 import Header from "./components/Header";
@@ -23,6 +24,12 @@ export default class App extends React.Component {
   }
 
   handleAddingNewTamagotchi(newTamagotchi) {
+    let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
+    newTamagotchi.formattedAge = (newTamagotchi.timeOpen).fromNow(true);
+    newTamagotchi.formattedHunger = (newTamagotchi.hunger);
+    newTamagotchi.formattedEntertainment = (newTamagotchi.entertainmentLevel);
+    newTamagotchi.formattedFatigue= (newTamagotchi.fatigue);
+    newMasterTamagotchiList.push(newTamagotchi);
     this.setState({
       masterTamagotchiList: [...this.state.masterTamagotchiList, newTamagotchi]
     });
@@ -48,6 +55,14 @@ export default class App extends React.Component {
       () => this.decreaseEntertainment(),
       25000
     );
+  }
+
+  componentWillUnmount(){
+    console.log('unmount log')
+    clearInterval(this.tamagotchiAgeUpdate);
+    clearInterval(this.tamagotchiHungerUpdate);
+    clearInterval(this.tamagotchiFatigueUpdate);
+    clearInterval(this.tamagotchiEntertainmentUpdate);
   }
 
   updateTamagotchiAge() {
