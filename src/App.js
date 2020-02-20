@@ -102,7 +102,6 @@ feedTamagotchi(){
   console.log('tamgotchi fed');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
   newMasterTamagotchiList.forEach((tamagotchi) => (tamagotchi.hunger < 20) ? tamagotchi.formattedHunger = (tamagotchi.hunger+=1) : console.log('hunger limit')
-  
   )
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }
@@ -111,7 +110,6 @@ entertainTamagotchi(){
   console.log('tomagatchi entertained');
   let newMasterTamagotchiList = this.state.masterTamagotchiList.slice();
   newMasterTamagotchiList.forEach((tamagotchi) => (tamagotchi.entertainmentLevel < 20) ? tamagotchi.formattedEntertainment = (tamagotchi.entertainmentLevel+=2) : console.log('filled with fun')
-  
   )
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
 }

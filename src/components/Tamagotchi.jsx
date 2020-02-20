@@ -31,7 +31,7 @@ export default function Tamagotchi(props){
 
 Tamagotchi.propTypes = {
     name: PropTypes.string.isRequired,
-    formattedAge: PropTypes.number,
+    formattedAge: PropTypes.string,
     formattedHunger: PropTypes.number,
     formattedEntertainment: PropTypes.number,
     formattedFatigue: PropTypes.number
