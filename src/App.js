@@ -66,7 +66,7 @@ decreaseHunger(){
   if( tamagotchi.hunger > 0){
     tamagotchi.formattedHunger = (tamagotchi.hunger-=1)
   }else{
-    console.log('death')
+    console.log('death by hunger')
   }
   })
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
@@ -79,7 +79,7 @@ decreaseRestfulness(){
   if (tamagotchi.fatigue > 0 ){
     tamagotchi.formattedFatigue = (tamagotchi.fatigue-=1)
   }else{
-    console.log('dead')
+    console.log('death by fatigue')
   }
 });
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
@@ -92,7 +92,7 @@ decreaseEntertainment(){
     if ( tamagotchi.entertainmentLevel > 0){
       tamagotchi.formattedEntertainment = (tamagotchi.entertainmentLevel-=1)
     }else{
-      console.log('dead from Boredness')
+      console.log('death by boredom')
     }
   })
   this.setState({masterTamagotchiList: newMasterTamagotchiList})
